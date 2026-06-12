@@ -9,7 +9,7 @@ body{
 * {
     box-sizing: border-box;
   }
-header{
+  .header--main{
     background:
     radial-gradient(
       circle at top left,
@@ -19,12 +19,10 @@ header{
     );
 }
 
+
 .container{
     max-width: 1200px;
     margin: 0 auto;
-   
-    
-   
     
 }
 .header__container{
@@ -33,10 +31,7 @@ header{
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
-   padding-top: 30px;
-    
-    
- 
+   padding-top: 30px;  
 }
 
 .navigation{
@@ -66,16 +61,35 @@ header{
     color: #FAFAFA;
   }
   .navigation__link--active {
+    pointer-events: none;
+    cursor: default;
     color: #FAFAFA;
     border-bottom: 3px solid #F1CDB3;
   }
+
 
   .navigation__item{
    
     color: #F1CDB3;
   }
+
+  .header--pets .navigation__link {
+    color: #545454;
+  }
+  
+  .header--pets .navigation__link:hover {
+    color: #292929;
+  }
+  
+  .header--pets .navigation__link--active {
+    color: #292929;
+    border-bottom: 3px solid #F1CDB3;
+  }
+
+  .header--pets .header__container {
+    padding: 30px 0;
+}
 .header__logo{
-    
     gap: 10px;
 }
 .logo {
@@ -92,7 +106,6 @@ header{
     line-height: 110%;
     letter-spacing: 0.06em;
     
-    
 }
 .logo__subtitle{
     display: block;
@@ -103,6 +116,15 @@ header{
     line-height: 115%;
     
 }
+
+
+.header--pets .logo__title {
+    color: #545454;
+  }
+  
+  .header--pets .logo__subtitle {
+    color: #292929;
+  }
 .hero{
     display: flex;
     justify-content: space-between;
@@ -215,6 +237,7 @@ header{
     
 }
 .pets__container {
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -592,4 +615,83 @@ footer{
 .pets__card:hover .slider__btn {
     background-color: #FDDCC4 !important;
     border-color: #FDDCC4 !important;
+}
+
+
+.pets--page {
+    background-color: #F6F6F6;
+    padding: 80px 0 100px;
+    width: 100%;
+}
+
+
+.pets__cards--page {
+    display: grid;
+    grid-template-columns: repeat(4, 270px);
+
+    /* 270 * 4 + 40 * 3 = 1200 */
+    gap: 30px 40px;
+    width: 1200px;
+    overflow: visible;
+}
+
+.pets__cards--page .pets__card {
+    width: 270px;
+    height: 435px;
+}
+.pets__card-name {
+    margin-bottom: 30px;
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    line-height: 115%;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    margin-top: 60px;
+}
+
+.pagination__btn {
+    width: 52px;
+    height: 52px;
+
+    border: 2px solid #F1CDB3;
+    border-radius: 50%;
+    background: transparent;
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    line-height: 115%;
+    color: #292929;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+.pagination__btn--active {
+    background-color: #F1CDB3;
+    border-color: #F1CDB3;
+}
+
+
+.pagination__btn:disabled,
+.pagination__btn--disabled {
+    border-color: #CDCDCD;
+    color: #CDCDCD;
+    background-color: transparent;
+    cursor: default;
+}
+
+
+.pagination__btn:not(:disabled):hover {
+    background-color: #FDDCC4;
+    border-color: #FDDCC4;
 }
