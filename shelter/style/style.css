@@ -1,13 +1,24 @@
 html {
     scroll-behavior: smooth;
   }
-body{
-    
-    margin: 0;
-
-}
-* {
+  
+  * {
     box-sizing: border-box;
+  }
+  
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  img {
+    max-width: 100%;
+    display: block;
   }
   .header--main{
     background:
@@ -22,7 +33,9 @@ body{
 
 .container{
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
+    padding: 0 40px;
     
 }
 .header__container{
@@ -131,9 +144,7 @@ body{
     
     margin-top: 60px;
 }
-.burger {
-    display: none;
-  }
+
 
 .hero__content{
     display: flex;
@@ -695,3 +706,112 @@ footer{
     background-color: #FDDCC4;
     border-color: #FDDCC4;
 }
+
+.burger {
+    display: none;
+    width: 30px;
+    height: 22px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #F1CDB3;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .burger__line {
+    display: block;
+    width: 30px;
+    height: 2px;
+    background-color: currentColor;
+  }
+  
+  @media (max-width: 767px) {
+    .navigation {
+      display: none;
+    }
+  
+    .burger {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 1279px) and (min-width: 768px) {
+    .container {
+      max-width: 768px;
+      padding: 0 30px;
+    }
+  
+    .header__container {
+      padding-top: 30px;
+    }
+  
+    .hero {
+      flex-direction: column;
+      align-items: center;
+      margin-top: 60px;
+    }
+  
+    .hero__content {
+      width: 460px;
+      padding-top: 0;
+      margin-bottom: 0;
+      align-items: flex-start;
+    }
+  
+    .hero__title {
+      margin: 0 0 42px;
+    }
+  
+    .hero__subheading {
+      margin: 0 0 42px;
+      padding-bottom: 0;
+    }
+  
+    .hero__button {
+      align-self: center;
+    }
+  
+    .hero__image {
+      width: 569px;
+      height: auto;
+      padding: 0;
+      margin-top: 100px;
+      align-self: flex-end;
+    }
+  
+    .hero__image img {
+      width: 100%;
+      height: auto;
+    }
+    .about__container {
+        flex-direction: column-reverse;
+        gap: 80px;
+        padding-top: 80px;
+        padding-bottom: 100px;
+      }
+    
+      .about__content {
+        width: 430px;
+        height: auto;
+      }
+    
+      .about__title {
+        width: 370px;
+        margin: 0;
+        
+      }
+    
+      .about__image {
+        width: 300px;
+        height: 408px;
+      }
+    
+      .about__image img {
+        width: 100%;
+        height: auto;
+      }
+    
+  }
+  
