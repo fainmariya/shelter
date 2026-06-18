@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
-
     <link rel="stylesheet" href="./style/style.css">
     
     <link rel="icon" type="image/png" href="./assets/icons/favicon.png">
@@ -21,21 +19,20 @@
                     </a>
                 </div>
                 <nav class="navigation">
-                <ul class="navigation__list">
+                  <ul class="navigation__list">
                     <li class="navigation__item"><a class="navigation__link navigation__link--active" href="#about">About the shelter</a></li>
                     <li class="navigation__item"><a class="navigation__link" href="./pets.html">Our pets</a></li>
                     <li class="navigation__item"><a class="navigation__link" href="#help">Help the shelter</a></li>
                     <li class="navigation__item"><a class="navigation__link" href="#contacts">Contacts</a></li>
                   </ul>
-                
-                  <button class="burger" type="button" aria-label="Open menu">
-                    <span class="burger__line"></span>
-                    <span class="burger__line"></span>
-                  </button>
-              
                </nav>
-    
+                <button class="burger" type="button" aria-label="Open menu">
+                    <span class="burger__line"></span>
+                    <span class="burger__line"></span>
+                    <span class="burger__line"></span>
+                </button>
             </div>
+        
             <section class="hero">
                 <div class="hero__content">
                     <h1 class="hero__title">Not only people <br>need a house</h1>
@@ -56,7 +53,7 @@
         <section class="about" id="about">
             <div class="container about__container">
                 <div class="about__image">
-                    <img src="./assets/images/about-pets.png" alt="about-pets">
+                    <img xlass="about__img" src="./assets/images/about-pets.png" alt="about-pets">
                 </div>
                 <div class="about__content">
                     <h2 class="about__title">About the shelter “Cozy House”</h2>
@@ -126,50 +123,58 @@
         </section>
         <section class="help" id="help">
             <div class="container help__container">
-                <h2 class="help__title">How you can help<br> our shelter
+                <h2 class="help__title">
+                    How you can help<br>
+                    our shelter
                 </h2>
-                <div class="help__list">
-                    <div class="help_list_card">
-                        <img src="./assets/icons/icon-pet-food.svg" alt="pet_food" class="help_list_img">
+        
+                <ul class="help__list">
+                    <li class="help__item">
+                        <img src="./assets/icons/icon-pet-food.svg" alt="Pet food" class="help__icon">
                         <h3 class="help__item-title">Pet food</h3>
-                    </div>
-                    <div class="help_list_card">
-                        <img src="./assets/icons/icon-transportation.svg" alt="icon-transportation" class="help_list_img">
+                    </li>
+        
+                    <li class="help__item">
+                        <img src="./assets/icons/icon-transportation.svg" alt="Transportation" class="help__icon">
                         <h3 class="help__item-title">Transportation</h3>
-                    </div>
-                    <div class="help_list_card">
-                        <img src="./assets/icons/icon-toys.svg" alt="icon-toys" class="help_list_img">
-                        <h3 class="help__item-title"> Toys</h3>
-                    </div>
-                    <div class="help_list_card">
-                        <img src="./assets/icons/icon-bowls-and-cups.svg" alt="bowls-and-cups" class="help_list_img">
+                    </li>
+        
+                    <li class="help__item">
+                        <img src="./assets/icons/icon-toys.svg" alt="Toys" class="help__icon">
+                        <h3 class="help__item-title">Toys</h3>
+                    </li>
+        
+                    <li class="help__item">
+                        <img src="./assets/icons/icon-bowls-and-cups.svg" alt="Bowls and cups" class="help__icon">
                         <h3 class="help__item-title">Bowls and cups</h3>
-                    </div>
-                    <div class="help_list_card">
-                        <img src="./assets/icons/icon-shampoos.svg" alt="shampoos" class="help_list_img">
+                    </li>
+        
+                    <li class="help__item">
+                        <img src="./assets/icons/icon-shampoos.svg" alt="Shampoos" class="help__icon">
                         <h3 class="help__item-title">Shampoos</h3>
-                    </div>
-                    <div class="help_list_card">
-                        <img src="./assets/icons/icon-vitamins.svg" alt="vitamins" class="help_list_img">
+                    </li>
+        
+                    <li class="help__item">
+                        <img src="./assets/icons/icon-vitamins.svg" alt="Vitamins" class="help__icon">
                         <h3 class="help__item-title">Vitamins</h3>
-                    </div>
-                    <div class="help_list_card">
-                        <img src="./assets/icons/icon-medicines.svg" alt="medicines" class="help_list_img">
+                    </li>
+        
+                    <li class="help__item">
+                        <img src="./assets/icons/icon-medicines.svg" alt="Medicines" class="help__icon">
                         <h3 class="help__item-title">Medicines</h3>
-                    </div>
-                    <div class="help_list_card">
-                        <img src="./assets/icons/icon-collars-leashes.svg" alt="collars-leashes" class="help_list_img">
-                        <h3 class="help__item-title">Collars/leashes</h3>
-                    </div>
-                    <div class="help_list_card">
-                        <img src="./assets/icons/icon-sleeping-area.svg" alt="sleeping-area" class="help_list_img">
+                    </li>
+        
+                    <li class="help__item">
+                        <img src="./assets/icons/icon-collars-leashes.svg" alt="Collars / leashes" class="help__icon">
+                        <h3 class="help__item-title">Collars / leashes</h3>
+                    </li>
+        
+                    <li class="help__item">
+                        <img src="./assets/icons/icon-sleeping-area.svg" alt="Sleeping areas" class="help__icon">
                         <h3 class="help__item-title">Sleeping areas</h3>
-                    </div>
-
-                </div>
-
+                    </li>
+                </ul>
             </div>
-
         </section>
         <section class="donation">
             <div class="container donation__container">
