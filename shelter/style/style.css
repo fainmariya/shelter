@@ -929,7 +929,31 @@ footer{
       }
     
       .pets__button {
-        margin-top: 60px;
+        margin-top: 50px;
+      }
+
+      .pets--page {
+        padding: 80px 0 76px;
+      }
+      
+      
+      .pets--page .pets__title {
+        margin-bottom: 30px;
+      }
+      
+      
+      .pets--page .pets__cards--page {
+        width: 580px;
+        max-width: 580px;
+      
+        display: grid;
+        grid-template-columns: repeat(2, 270px);
+        gap: 30px 40px;
+      
+        overflow: visible;
+      }
+      .pets--page .pets__card:nth-child(n + 7) {
+        display: none;
       }
       .donation__container {
         flex-direction: column-reverse;
@@ -1153,12 +1177,12 @@ footer{
         row-gap: 20px;
       }
     
-      .pets__cards {
+      .pets__slider .pets__cards {
         order: 1;
-    
+      
         width: 270px;
         height: 435px;
-    
+      
         display: flex;
         gap: 0;
         overflow: hidden;
@@ -1456,5 +1480,70 @@ footer{
       .footer__puppy__img {
         width: 260px;
         height: auto;
+      }
+      .page--pets .burger {
+        margin-right: 23px;
+      }
+      .pets--page {
+        padding: 42px 0;
+      }
+      
+      .pets--page .pets__container {
+        max-width: 320px;
+        padding: 0 10px;
+      }
+      
+      .pets--page .pets__title {
+        width: 300px;
+        margin: 0 0 42px;
+      
+        font-size: 25px;
+        line-height: 130%;
+        letter-spacing: 0.06em;
+        text-align: center;
+      }
+      
+     
+      .pets--page .pets__cards--page {
+        order: 0;
+        width: 270px;
+        max-width: 270px;
+        height: auto;
+      
+        display: grid;
+        grid-template-columns: 270px;
+        row-gap: 30px;
+      
+        overflow: visible;
+      }
+      
+      
+      .pets--page .pets__card {
+        width: 270px;
+        min-width: 270px;
+        height: 435px;
+      }
+      
+      
+      .pets--page .pets__card:nth-child(n + 4) {
+        display: none;
+      }
+      
+      
+      .pets--page .pagination {
+        width: 300px;
+      
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      
+        margin: 42px auto 0;
+      }
+      
+      .pets--page .pagination__btn {
+        width: 52px;
+        height: 52px;
+        flex-shrink: 0;
       }
     }
