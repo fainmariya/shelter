@@ -1697,4 +1697,11 @@ footer{
         background-color: #f1cdb3;
       }
     }
+    .pets__cards--page {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
     
+    .pets__cards--page-fade {
+      opacity: 0;
+      transform: translateY(20px);
+    }

@@ -182,10 +182,27 @@ let paginationPets = [];
 let currentPage = 1;
 let petsPerPage = getPetsPerPage();
 let totalPages = 1;
+let isPaginationAnimating = false;
+
 if (petsPageCards) {
   
   initPagination();
   window.addEventListener('resize', handlePaginationResize);
+  paginationNextButton.addEventListener('click', function () {
+    goToPage(currentPage + 1);
+  });
+
+  paginationLastButton.addEventListener('click', function () {
+    goToPage(totalPages);
+  });
+
+  paginationPrevButton.addEventListener('click', function () {
+    goToPage(currentPage - 1);
+  });
+
+  paginationFirstButton.addEventListener('click', function () {
+    goToPage(1);
+  });
 }
 
 
@@ -223,13 +240,22 @@ async function initPagination() {
     
   }
 function createPaginationPets(petsData) {
-    const paginationPets = [];
-  
-    for (let i = 0; i < 6; i++) {
-      paginationPets.push(...petsData);
+  const paginationPets = [];
+
+  for (let i = 0; i < 6; i++) {
+    let shuffledPets = shuffleArray(petsData);
+
+    while (
+      paginationPets.length > 0 &&
+      paginationPets[paginationPets.length - 1].name === shuffledPets[0].name
+    ) {
+      shuffledPets = shuffleArray(petsData);
     }
-  
-    return paginationPets;
+
+    paginationPets.push(...shuffledPets);
+  }
+
+  return paginationPets;
   }
   function getCurrentPagePets() {
     const startIndex = (currentPage - 1) * petsPerPage;
@@ -268,7 +294,9 @@ function createPaginationPets(petsData) {
       `;
   
       petsPageCards.append(card);
+      
     });
+    updatePaginationControls();
   }
   function hasAdjacentDuplicates(pets) {
     for (let i = 0; i < pets.length - 1; i++) {
@@ -289,8 +317,66 @@ function createPaginationPets(petsData) {
       return  3
   
 }
+function updatePaginationControls() {
+  paginationCurrentButton.textContent = currentPage;
 
-  
+  if (currentPage === 1) {
+    paginationFirstButton.disabled = true;
+    paginationPrevButton.disabled = true;
+
+    paginationFirstButton.classList.add('pagination__btn--disabled');
+    paginationPrevButton.classList.add('pagination__btn--disabled');
+  } else {
+    paginationFirstButton.disabled = false;
+    paginationPrevButton.disabled = false;
+
+    paginationFirstButton.classList.remove('pagination__btn--disabled');
+    paginationPrevButton.classList.remove('pagination__btn--disabled');
+  }
+
+  if (currentPage === totalPages) {
+    paginationNextButton.disabled = true;
+    paginationLastButton.disabled = true;
+
+    paginationNextButton.classList.add('pagination__btn--disabled');
+    paginationLastButton.classList.add('pagination__btn--disabled');
+  } else {
+    paginationNextButton.disabled = false;
+    paginationLastButton.disabled = false;
+
+    paginationNextButton.classList.remove('pagination__btn--disabled');
+    paginationLastButton.classList.remove('pagination__btn--disabled');
+  }
+}
+function goToPage(pageNumber) {
+  if (pageNumber < 1 || pageNumber > totalPages) {
+    return;
+  }
+
+  if (pageNumber === currentPage) {
+    return;
+  }
+
+  if (isPaginationAnimating) {
+    return;
+  }
+
+  isPaginationAnimating = true;
+
+  petsPageCards.classList.add('pets__cards--page-fade');
+
+  setTimeout(function () {
+    currentPage = pageNumber;
+
+    renderPaginationPage();
+
+    petsPageCards.classList.remove('pets__cards--page-fade');
+
+    setTimeout(function () {
+      isPaginationAnimating = false;
+    }, 300);
+  }, 300);
+}
 function openMenu() {
   burger.classList.add('burger--open');
   nav.classList.add('navigation--open');
