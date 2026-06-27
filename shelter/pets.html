@@ -54,64 +54,37 @@
               </button>
             </div>
         </div>
+        <div class="menu-overlay"></div>
     </header>
     <main>
         <section class="pets pets--page" id="pets">
             <div class="container pets__container">
                 <h1 class="pets__title">Our friends who<br> are looking for a house</h1>
                 <div class="pets__cards pets__cards--page">
-                    
-                    
-                        <div class="pets__card">
-                            <img src="./assets/images/pets-katrine.png" alt="katarine" class="slider-card-img">
-                            <span class="pets__card-name">Katrine</span>
-                             <button class="slider__btn">Learn more</button>
-                        </div>
-                        <div class="pets__card">
-                            <img src="./assets/images/pets-jennifer.png" alt="jennifer" class="slider-card-img">
-                            <span class="pets__card-name">Jennifer</span>
-                            <button class="slider__btn">Learn more</button>
-                        </div>
-                        <div class="pets__card">
-                            <img src="./assets/images/pets-woody.png" alt="woody" class="slider-card-img">
-                            <span class="pets__card-name">Woody</span>
-                            <button class="slider__btn">Learn more</button>
-                        </div> 
-                        <div class="pets__card">
-                            <img src="./assets/images/pets-sofia.png" alt="sofia" class="slider-card-img">
-                            <span class="pets__card-name">Sophia</span>
-                            <button class="slider__btn">Learn more</button>
-                        </div>
-                        <div class="pets__card">
-                            <img src="./assets/images/pets-timmy.png" alt="timmy" class="slider-card-img">
-                            <span class="pets__card-name">Timmy</span>
-                            <button class="slider__btn">Learn more</button>
-                        </div>
-                        <div class="pets__card">
-                            <img src="./assets/images/pets-charly.png" alt="charly" class="slider-card-img">
-                            <span class="pets__card-name">Charly</span>
-                            <button class="slider__btn">Learn more</button>
-                        </div>
-                        <div class="pets__card">
-                            <img src="./assets/images/pets-scarlet.png" alt="scarlet" class="slider-card-img">
-                            <span class="pets__card-name">Scarlett</span>
-                            <button class="slider__btn">Learn more</button>
-                        </div>
-                        <div class="pets__card">
-                            <img src="./assets/images/pets-freddie.png" alt="freddie" class="slider-card-img">
-                            <span class="pets__card-name">Freddie</span>
-                            <button class="slider__btn">Learn more</button>
-                        </div>
-                    
-                    
-                    
+            
                 </div>  
                 <div class="pagination">
-                    <button class="pagination__btn pagination__btn--disabled" type="button" disabled>&lt;&lt;</button>
-                    <button class="pagination__btn pagination__btn--disabled" type="button" disabled>&lt;</button>
-                    <button class="pagination__btn pagination__btn--active" type="button">1</button>
-                    <button class="pagination__btn" type="button">&gt;</button>
-                    <button class="pagination__btn" type="button">&gt;&gt;</button>
+                    <div class="pagination">
+                        <button class="pagination__btn pagination__btn--first pagination__btn--disabled" type="button" disabled>
+                          &lt;&lt;
+                        </button>
+                      
+                        <button class="pagination__btn pagination__btn--prev pagination__btn--disabled" type="button" disabled>
+                          &lt;
+                        </button>
+                      
+                        <button class="pagination__btn pagination__btn--current pagination__btn--active" type="button">
+                          1
+                        </button>
+                      
+                        <button class="pagination__btn pagination__btn--next" type="button">
+                          &gt;
+                        </button>
+                      
+                        <button class="pagination__btn pagination__btn--last" type="button">
+                          &gt;&gt;
+                        </button>
+                      </div>
                 </div>      
                 
             </div>
@@ -159,5 +132,13 @@
 
         
     </footer>
+    <div class="modal">
+        <div class="modal__content">
+          <button class="modal-close" type="button" aria-label="Close popup">×</button>
+      
+          <div class="modal__body"></div>
+        </div>
+      </div>
+    <script src="./js/index.js"></script>
 </body>
 </html>
