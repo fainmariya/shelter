@@ -142,15 +142,13 @@ function createPetCard(pet) {
   
   }
   nextButton.addEventListener('click',function(){
-    handleNextClick()
+    switchCarousel('next');
   })
   prevButton.addEventListener('click',function(){
-    handlePrevClick()
+    switchCarousel('prev');
   })
   
-  function handlePrevClick() {
-    console.log('prev')
-  }
+  
 
   function getNextGroup(currentGroup, petsData) {
     let currentPetsNames = currentGroup.map((pet) => pet.name);
@@ -167,9 +165,58 @@ function createPetCard(pet) {
     return newNextPets;
   
   }
-function handleNextClick() {
-  
-  const nextGroup = getNextGroup(currentGroup, petsData);
-  currentGroup = nextGroup;
+
+
+function switchCarousel(direction) {
+  if (isAnimating) {
+    return;
+  }
+
+  isAnimating = true;
+
+  const newGroup = getNextGroup(currentGroup, petsData);
+
+  const moveClass =
+    direction === 'next'
+      ? 'pets__cards--move-left'
+      : 'pets__cards--move-right';
+
+  const fromClass =
+    direction === 'next'
+      ? 'pets__cards--from-right'
+      : 'pets__cards--from-left';
+
+  carouselTrack.classList.add(moveClass);
+
+  setTimeout(function () {
+    currentGroup = newGroup;
+    renderGroup(currentGroup);
+
+    carouselTrack.classList.remove(moveClass);
+    carouselTrack.classList.add(fromClass);
+
+    carouselTrack.offsetWidth;
+
+    carouselTrack.classList.remove(fromClass);
+
+    setTimeout(function () {
+      isAnimating = false;
+    }, 500);
+  }, 500);
+}
+function handleResize() {
+  const newGroupSize = getGroupSize();
+
+  if (newGroupSize === groupSize) {
+    return;
+  }
+
+
+  groupSize = newGroupSize;
+
+  currentGroup = getNextGroup(currentGroup, petsData);
+
   renderGroup(currentGroup);
 }
+
+window.addEventListener('resize', handleResize);

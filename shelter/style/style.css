@@ -336,6 +336,30 @@ html {
   width: 990px;
   overflow: hidden;
   }
+  .pets__carousel {
+    overflow: hidden;
+  }
+  .pets__cards {
+    transition: transform 0.5s ease;
+  }
+  
+  .pets__cards--move-left {
+    transform: translateX(-100%);
+  }
+  
+  .pets__cards--move-right {
+    transform: translateX(100%);
+  }
+  
+  .pets__cards--from-left {
+    transition: none;
+    transform: translateX(-100%);
+  }
+  
+  .pets__cards--from-right {
+    transition: none;
+    transform: translateX(100%);
+  }
   
 .pets__card{
     max-width: 270px;
