@@ -16,6 +16,11 @@ const paginationNextButton = document.querySelector('.pagination__btn--next');
 const paginationLastButton = document.querySelector('.pagination__btn--last');
 const petsPageCards = document.querySelector('.pets__cards--page');
 
+const modal = document.querySelector('.modal');
+const modalBody = document.querySelector('.modal__body');
+const modalCloseButton = document.querySelector('.modal-close');
+
+let allPetsData = [];
 async function loadPets() {
   const response = await fetch('./pets.json');
   const pets = await response.json();
@@ -57,6 +62,7 @@ if (carouselTrack && nextButton && prevButton) {
  }
   async function initCarousel() {
     petsData = await loadPets();
+    allPetsData = petsData;
     groupSize = getGroupSize();
     
    
@@ -208,6 +214,7 @@ if (petsPageCards) {
 
 async function initPagination() {
   const petsData = await loadPets();
+  allPetsData = petsData;
   
   paginationPets = createPaginationPets(petsData);
   petsPerPage = getPetsPerPage();
@@ -410,21 +417,73 @@ navLinks.forEach((link) => {
   link.addEventListener('click', closeMenu);
 });
 
-function createPetModal(pet){
-  return `
-  <div class="pet__container">
-    <img src="${pet.img}" alt="${pet.name}" class="about__img">
-    <h2>${pet.name}</h2>
-    <h4>${pet.type}${pet.breed}</h2>
-    <span>${pet.discription}</span>
-    <ul>
-      <li>Age:${pet.age}</li>
-      <li>Inoculations: ${pet.inoculations}</li>
-      <li>Diseases:${pet.diseases}</li>
-      <li>Parasites:${pet.parasites}</li>
-    </ul>
-    <button class="slider__btn" type="button">Learn more</button>
-  </div>
-  `;
 
+    
+function createPetModal(pet) {
+  return `
+    <div class="pet__container">
+      <img src="${pet.img}" alt="${pet.name}" class="modal__img">
+
+      <div class="modal__info">
+        <h2 class="modal__title">${pet.name}</h2>
+
+        <p class="modal__subtitle">${pet.type} - ${pet.breed}</p>
+
+        <p class="modal__description">${pet.description}</p>
+
+        <ul class="modal__list">
+          <li><span class="modal__list-title">Age:</span> ${pet.age}</li>
+          <li><span class="modal__list-title">Inoculations:</span> ${pet.inoculations.join(', ')}</li>
+          <li><span class="modal__list-title">Diseases:</span> ${pet.diseases.join(', ')}</li>
+          <li><span class="modal__list-title">Parasites:</span> ${pet.parasites.join(', ')}</li>
+        </ul>
+      </div>
+    </div>
+  `;
 }
+function openPetModal(pet) {
+  modalBody.innerHTML = createPetModal(pet);
+
+  modal.classList.add('modal--open');
+
+  body.classList.add('no-scroll');
+  html.classList.add('no-scroll');
+}
+function closePetModal() {
+  modal.classList.remove('modal--open');
+
+  body.classList.remove('no-scroll');
+  html.classList.remove('no-scroll');
+
+  modalBody.innerHTML = '';
+}
+document.addEventListener('click', function (event) {
+  const card = event.target.closest('.pets__card');
+
+  if (!card) {
+    return;
+  }
+
+  const petName = card.dataset.petName;
+
+  const pet = allPetsData.find(function (pet) {
+    return pet.name === petName;
+  });
+
+  if (!pet) {
+    return;
+  }
+
+  openPetModal(pet);
+});
+modalCloseButton.addEventListener('click', closePetModal);
+modal.addEventListener('click', function (event) {
+  if (event.target === modal) {
+    closePetModal();
+  }
+});
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape' && modal.classList.contains('modal--open')) {
+    closePetModal();
+  }
+});
